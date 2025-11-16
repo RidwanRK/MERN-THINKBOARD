@@ -1,9 +1,10 @@
 import React from 'react'
+import Navbar from '../components/Navbar.jsx'
 
 const Homepage = () => {
   return (
-    <div>
-      Homepage
+    <div className= "min-h-screen">
+      <Navbar />
     </div>
   )
 }

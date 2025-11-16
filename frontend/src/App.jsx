@@ -8,7 +8,7 @@ import { Route } from 'react-router'
 
 const App = () => {
   return (
-    <div>
+    <div data-theme="forest">
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/create" element={<CreatePage />} />

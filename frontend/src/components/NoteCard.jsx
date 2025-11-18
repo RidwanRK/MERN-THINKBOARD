@@ -1,14 +1,20 @@
-import React from 'react'
+
+import React from 'react';
 import { Link } from 'react-router';
 import { Trash2Icon, PenSquareIcon } from 'lucide-react';
 import { formatDate } from '../lib/utils.js';
 
-const NoteCard = ({note}) => {
+const NoteCard = ({ note, setNotes, openDeleteModal }) => {
+  const handleDeleteClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openDeleteModal(note);
+  };
+
   return (
     <Link
       to={`/note/${note._id}`}
-      className="card bg-base-100 hover:shadow-lg transition-all duration-200 
-      border-t-4 border-solid border-[#00FF9D]"
+      className="card bg-base-100 hover:shadow-lg transition-all duration-200 border-t-4 border-solid border-[#00FF9D] relative"
     >
       <div className="card-body">
         <h3 className="card-title text-base-content">{note.title}</h3>
@@ -21,7 +27,8 @@ const NoteCard = ({note}) => {
             <PenSquareIcon className="size-4" />
             <button
               className="btn btn-ghost btn-xs text-error"
-              onClick={(e) => handleDelete(e, note._id)}
+              onClick={handleDeleteClick}
+              title="Delete Note"
             >
               <Trash2Icon className="size-4" />
             </button>
@@ -29,7 +36,7 @@ const NoteCard = ({note}) => {
         </div>
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export default NoteCard
+export default NoteCard;
